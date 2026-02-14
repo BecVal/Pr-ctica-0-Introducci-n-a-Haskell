@@ -6,7 +6,7 @@
 
     Inetgrantes del equipo:
     - Becerra Valencia César
-    - Cortez Nava José Luis
+    - Cortes Nava José Luis
     - Díaz Anavia Javier Omar
 -}
 
@@ -34,12 +34,29 @@ mcd a b = mcd b (modulo b a)
 -- PARTE B: RECURSIÓN SOBRE LISTAS
 
 -- Ejercicio 4. Reversa de lista
+reversa :: [a] -> [a]
+reversa [] = []
+reversa (x:xs) = reversa xs ++ [x]
 
 -- Ejercicio 5. Máximo de elementos
+maximo :: [Integer] -> Integer
+maximo [] = error "La lista no puede estar vacía"
+maximo [x] = x
+maximo (x:xs) = max x (maximo xs)
 
 -- Ejercicio 6. Filtrar lista
+pares :: [Integer] -> [Integer]
+pares [] = []
+pares (x:xs)
+  | even x = x : pares xs
+  | otherwise = pares xs
 
 -- Ejercicio 7. Contar Ocurrencias
+contar :: Integer -> [Integer] -> Integer
+contar _ [] = 0
+contar n (x:xs)
+  | x == n = 1 + contar n xs
+  | otherwise = contar n xs
 
 -- PARTE C: TIPOS ALGÉBRAICOS
 
