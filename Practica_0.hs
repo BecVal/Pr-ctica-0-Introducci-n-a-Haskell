@@ -44,7 +44,19 @@ mcd a b = mcd b (modulo b a)
 -- PARTE C: TIPOS ALGÉBRAICOS
 
 -- Ejercicio 8. Definición de números naturales
+data Nat = Z | S Nat deriving Show
 
 -- Ejercicio 9. Conversión a entero
+convertir :: Nat -> Integer
+convertir Z = 0
+convertir (S n) = 1 + convertir n
 
 -- Ejercicio 10. Multiplicación sobre Nat
+mult :: Nat -> Nat -> Nat
+mult Z _ = Z
+mult _ Z = Z
+mult (S n) m = sumarAux m (mult n m)
+
+sumarAux :: Nat -> Nat -> Nat
+sumarAux Z m = m
+sumarAux (S n) m = S (sumarAux n m)
